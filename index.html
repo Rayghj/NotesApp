@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Notes App</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <note-nav img="logoNotes.png" imgAlt="Logo Notes App"></note-nav>
+        </header>
+
+        <main>
+            <indicator-loading></indicator-loading>
+            <section id="inputNewNote">
+                <h2 class="form-header">Catatan Baru</h2>
+                <form id="noteForm" class="note-form" autocomplete="off">
+                    <div class="input-note">
+                        <label for="noteFormTitle">Judul</label>
+                        <input
+                            id="noteFormTitle"
+                            name="formTitle"
+                            type="text"
+                            required
+                            minlength="4"
+                            maxlength="40"
+                            pattern="^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9\s._]+(?<![_.])$"
+                            aria-describedby="titleValidation"
+                        />
+                        <p
+                            id="titleValidation"
+                            class="title-validation"
+                            aria-live="polite"
+                        ></p>
+                    </div>
+                    <div class="input-note">
+                        <label for="noteFormBody">Isi</label>
+                        <textarea
+                            name="formBody"
+                            id="noteFormBody"
+                            minlength="10"
+                            maxlength="200"
+                            aria-describedby="bodyValidation"
+                            required
+                        ></textarea>
+                        <p
+                            id="bodyValidation"
+                            class="body-validation"
+                            aria-live="polite"
+                        ></p>
+                    </div>
+                    <div class="input-submit">
+                        <button id="noteFormSubmit" type="submit">
+                            Tambahkan Catatan<i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="listNotes">
+                <h3 class="list-header">Tidak di Arsip</h3>
+                <note-data></note-data>
+                <h3 class="list-header">Di Arsip</h3>
+                <note-archive></note-archive>
+            </section>
+        </main>
+
+        <footer>
+            <note-foot></note-foot>
+        </footer>
+    </body>
+</html>
